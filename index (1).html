@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSMG PM SHRI KPS YENNEKOPPA</title>
+    <!-- Mobile App Capabilities -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="maroon">
+    <meta name="apple-mobile-web-app-title" content="SSMG KPS">
+    <meta name="theme-color" content="#800000">
+    <style>
+        :root {
+            --maroon: #800000;
+            --gold: #FFD700;
+            --dark-gold: #C5A000;
+            --light-bg: #F5F7FA;
+            --dark-text: #2C3E50;
+            --white: #FFFFFF;
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .announcement-bar {
+            background-color: var(--gold);
+            color: var(--maroon);
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        header {
+            background-color: var(--maroon);
+            border-bottom: 4px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--gold);
+            color: var(--maroon);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(40, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--gold);
+            color: var(--maroon);
+            padding: 12px 30px;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--white);
+            color: var(--maroon);
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--maroon);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--gold);
+            margin: 10px auto 0;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--maroon);
+        }
+
+        .content-card h3 {
+            color: var(--maroon);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 10px;
+        }
+
+        .circular-list {
+            list-style: none;
+        }
+
+        .circular-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--light-bg);
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .circular-date {
+            font-size: 0.8rem;
+            background: var(--maroon);
+            color: var(--gold);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-download {
+            background: var(--maroon);
+            color: var(--white);
+            padding: 6px 12px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .filter-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            color: var(--maroon);
+            border: 2px solid var(--maroon);
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--maroon);
+            color: var(--gold);
+        }
+
+        .student-table-wrapper {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        th {
+            background-color: var(--maroon);
+            color: var(--white);
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .staff-card {
+            background: var(--white);
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .staff-avatar {
+            width: 80px;
+            height: 80px;
+            background: #E2E8F0;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--maroon);
+            border: 3px solid var(--maroon);
+        }
+
+        .gallery-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-box {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 200px;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-layer {
+            position: absolute;
+            bottom: 0;
+            background: rgba(128, 0, 0, 0.9);
+            color: var(--gold);
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-pane {
+            background: var(--maroon);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .info-pane h3 { color: var(--gold); margin-bottom: 15px; }
+
+        .interactive-form {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        .form-control label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-control input, .form-control textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+        }
+
+        .btn-submit {
+            background: var(--maroon);
+            color: var(--gold);
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            background: var(--dark-gold);
+            color: var(--maroon);
+        }
+
+        footer {
+            background-color: #1A1A1A;
+            color: #A0AEC0;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--maroon);
+            margin-top: 50px;
+        }
+
+        @media(max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 10px; }
+            .hero h1 { font-size: 2rem; }
+            .contact-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        📢 Admissions Open for Academic Session 2027-28 | Contact Admin Office for Details.
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">SSMG PM SHRI KPS</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#circulars">Circulars</a></li>
+                    <li><a href="#students">Students Portal</a></li>
+                    <li><a href="#admission">Admission</a></li>
+                    <li><a href="#staff">Staff Details</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#sports">Sports</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" style="max-width: 100%; padding: 0;">
+        <div class="hero">
+            <h1>SSMG PM SHRI KPS YENNEKOPPA</h1>
+            <p>Empowering minds, scaling milestones, and crafting global leaders through structured academic excellence.</p>
+            <a href="#admission" class="btn">Begin Application</a>
+        </div>
+    </section>
+
+    <section id="circulars">
+        <h2 class="section-title">Circulars & Announcements</h2>
+        <div class="card-grid">
+            <div class="content-card">
+                <h3>HM Circulars</h3>
+                <ul class="circular-list">
+                    <li class="circular-item">
+                        <span>Quarterly Parent-Teacher Meeting Agenda</span>
+                        <span class="circular-date">NEW</span>
+                    </li>
+                    <li class="circular-item">
+                        <span>Winter Uniform Compliance Guidelines</span>
+                        <a href="#" class="btn-download">View</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>Department Circulars</h3>
+                <ul class="circular-list">
+                    <li class="circular-item">
+                        <span>PM SHRI School Infrastructure Grant Update</span>
+                        <span class="circular-date">GOVT</span>
+                    </li>
+                    <li class="circular-item">
+                        <span>State Level Metric Scholarship Portal Open</span>
+                        <a href="#" class="btn-download">Apply</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="students">
+        <h2 class="section-title">Students Portal</h2>
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterClass('all')">Show All</button>
+            <button class="filter-btn" onclick="filterClass('LKG')">LKG</button>
+            <button class="filter-btn" onclick="filterClass('UKG')">UKG</button>
+            <button class="filter-btn" onclick="filterClass('1')">Class 1</button>
+            <button class="filter-btn" onclick="filterClass('2')">Class 2</button>
+            <button class="filter-btn" onclick="filterClass('3')">Class 3</button>
+            <button class="filter-btn" onclick="filterClass('4')">Class 4</button>
+            <button class="filter-btn" onclick="filterClass('5')">Class 5</button>
+            <button class="filter-btn" onclick="filterClass('6')">Class 6</button>
+            <button class="filter-btn" onclick="filterClass('7')">Class 7</button>
+        </div>
+
+        <div class="student-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Enrollment ID</th>
+                        <th>Student Name</th>
+                        <th>Class Target</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="studentBody">
+                    <!-- Dynamic Rows Insertion -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="admission">
+        <h2 class="section-title">Admissions</h2>
+        <div class="card-grid">
+            <div class="content-card">
+                <h3>Age Criteria Matrix</h3>
+                <p><strong>LKG / UKG:</strong> Must fulfill age standards of 3+ and 4+ years as of June 1st.</p>
+                <br>
+                <p><strong>Grades 1 to 7:</strong> Granted based on previous verified school records and authentic Transfer Certificates (TC).</p>
+            </div>
+            <div class="content-card">
+                <h3>Required Documents</h3>
+                <p>📝 Official Valid Birth Certificate copy</p>
+                <p>📝 Student & Parent Aadhaar Identification Cards</p>
+                <p>📝 Recent Passport-sized photographs</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="staff">
+        <h2 class="section-title">Staff Details</h2>
+        <div class="staff-grid">
+            <div class="staff-card">
+                <div class="staff-avatar">👨‍🏫</div>
+                <h3>Sri S. L. Naik</h3>
+                <p>Headmaster (HM)</p>
+            </div>
+            <div class="staff-card">
+                <div class="staff-avatar">👩‍🏫</div>
+                <h3>Smt. R. Gowda</h3>
+                <p>Senior Faculty</p>
+            </div>
+            <div class="staff-card">
+                <div class="staff-avatar">👨‍🎓</div>
+                <h3>Sri M. Kumar</h3>
+                <p>Primary Math & Science</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-matrix">
+            <div class="gallery-box">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80" alt="Classroom">
+                <div class="gallery-layer">Smart Classrooms</div>
+            </div>
+            <div class="gallery-box">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=500&q=80" alt="Lab">
+                <div class="gallery-layer">Science Laboratory</div>
+            </div>
+            <div class="gallery-box">
+                <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=500&q=80" alt="Library">
+                <div class="gallery-layer">Central Library</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sports">
+        <h2 class="section-title">Sports Programs</h2>
+        <div class="card-grid">
+            <div class="content-card">
+                <h3>Track & Field</h3>
+                <p>Training programs for 100m, 200m sprints, long jump, and relay teams to represent the institution at cluster and district athletic meets.</p>
+            </div>
+            <div class="content-card">
+                <h3>Team Sports</h3>
+                <p>Dedicated facilities for volleyball, kabaddi, chess tournaments, and badminton with focused weekend coaching setups.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-layout">
+            <div class="info-pane">
+                <h3>Institutional Desk</h3>
+                <p><strong>📍 Corporate Address:</strong></p>
+                <p>PM SHRI School KPS Yennekoppa, Taluk-Soraba, District-Shivamogga, Karnataka, India.</p>
+                <br>
+                <p><strong>📞 Helpdesk Extension:</strong> +91 94812 XXXXX</p>
+                <p><strong>✉️ Electronic Mail:</strong> office@pmshriyennekoppa.edu.in</p>
+                <br>
+                <p><strong>⏰ Office Hours:</strong> Monday – Saturday (09:00 AM – 04:30 PM)</p>
+            </div>
+            <form class="interactive-form" onsubmit="handleInquiry(event)">
+                <div class="form-control">
+                    <label>Guardian / Applicant Name</label>
+                    <input type="text" id="formName" required>
+                </div>
+                <div class="form-control">
+                    <label>Contact Phone Line</label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-control">
+                    <label>Core Administrative Query Message</label>
+                    <textarea rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Dispatch Query</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 SSMG PM SHRI KPS YENNEKOPPA. All Rights Reserved. Supervised via Department of School Education.
+    </footer>
+
+    <script>
+        const masterStudentsList = [
+            { id: "KPS-2026-09", name: "Aarav Naik", class: "LKG", status: "Active Profile" },
+            { id: "KPS-2026-44", name: "Bhavana S.", class: "UKG", status: "Active Profile" },
+            { id: "KPS-2026-102", name: "Chetan Kumar", class: "1", status: "Active Profile" },
+            { id: "KPS-2026-118", name: "Divya Patil", class: "2", status: "Active Profile" },
+            { id: "KPS-2026-205", name: "Ganesh Hegde", class: "3", status: "Active Profile" },
+            { id: "KPS-2026-312", name: "Kiran J.", class: "4", status: "Active Profile" },
+            { id: "KPS-2026-401", name: "Meena Naik", class: "5", status: "Active Profile" },
+            { id: "KPS-2026-550", name: "Rahul Smith", class: "6", status: "Active Profile" },
+            { id: "KPS-2026-701", name: "Sahana V.", class: "7", status: "Active Profile" },
+            { id: "KPS-2026-709", name: "Vivek Bhaskar", class: "7", status: "Active Profile" }
+        ];
+
+        function renderStudentsTable(filterTarget) {
+            const tableBody = document.getElementById('studentBody');
+            tableBody.innerHTML = "";
+
+            const filteredData = filterTarget === 'all' 
+                ? masterStudentsList 
+                : masterStudentsList.filter(s => s.class === filterTarget);
+
+            if(filteredData.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:gray;">No registered student records available for Class ${filterTarget} yet.</td></tr>`;
+                return;
+            }
+
+            filteredData.forEach(student => {
+                const rowHtml = `
+                    <tr>
+                        <td>${student.id}</td>
+                        <td>${student.name}</td>
+                        <td><span style="background:#E2E8F0; padding:3px 10px; border-radius:12px; font-weight:bold;">Class ${student.class}</span></td>
+                        <td style="color: green; font-weight: bold;">🟢 ${student.status}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += rowHtml;
+            });
+        }
+
+        function filterClass(className) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderStudentsTable(className);
+        }
+
+        function handleInquiry(e) {
+            e.preventDefault();
+            const sender = document.getElementById('formName').value;
+            alert(`Thank you, ${sender}! Your official inquiry form has been captured securely inside the school system.`);
+            document.querySelector('.interactive-form').reset();
+        }
+
+        window.onload = function() {
+            renderStudentsTable('all');
+        }
+    </script>
+</body>
+</html>
