@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SSMG PM SHRI KPS Yennekoppa</title>
+    <!-- Loads the Supabase library -->
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            border-top: 5px solid #800000; /* Maroon */
+        }
+        h2 {
+            color: #800000;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: #800000; /* Maroon */
+            color: #FFD700; /* Gold */
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-login:hover {
+            background-color: #600000;
+        }
+        #error-msg {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <h2>SSMG PM SHRI KPS</h2>
+    <p class="subtitle">Yennekoppa - Portal Login</p>
+    <form id="loginForm">
+        <div class="input-group">
+            <label for="email">Email ID</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn-login">SIGN IN</button>
+        <p id="error-msg"></p>
+    </form>
+</div>
+
+<!-- Links to your separate auth.js file -->
+<script src="auth.js"></script>
+</body>
+</html>
