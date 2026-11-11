@@ -1,6 +1,6 @@
 // Replace these two lines with your real keys from Supabase
-const SUPABASE_URL = "https://supabase.co";
-const SUPABASE_ANON_KEY = "your-actual-anon-public-key";
+const SUPABASE_URL = "https://xnttmfbrfzefrzionjvs.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_RJ5EpfhtdoGnrPmjizynQA_2NcEyEEk";
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
