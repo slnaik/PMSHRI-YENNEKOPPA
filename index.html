@@ -4,6 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSMG PM SHRI KPS YENNEKOPPA</title>
+    <head>
+    <!-- 1. Include the Supabase library -->
+    <script src="https://jsdelivr.net"></script>
+    
+    <!-- 2. The Gatekeeper Logic -->
+    <script>
+        // Replace these with your real Supabase project keys
+        const SUPABASE_URL = "https://supabase.co";
+        const SUPABASE_ANON_KEY = "your-actual-anon-public-key";
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Instantly check if a user session exists
+        async function checkProtection() {
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            // If NO active login session is found, kick them to the login page immediately
+            if (!session) {
+                window.location.href = "login.html";
+            }
+        }
+        
+        checkProtection();
+    </script>
+    
+    <!-- Rest of your existing head content (meta tags, css links, school title) -->
+    <title>SSMG PM SHRI KPS YENNEKOPPA</title>
+</head>
     <!-- Mobile App Capabilities -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="maroon">
