@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSMG PM SHRI KPS YENNEKOPPA</title>
-    <head>
     <!-- 1. Include the Supabase library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
@@ -13,11 +12,11 @@
         // Replace these with your real Supabase project keys
         const SUPABASE_URL = "https://xnttmfbrfzefrzionjvs.supabase.co";
         const SUPABASE_ANON_KEY = "sb_publishable_RJ5EpfhtdoGnrPmjizynQA_2NcEyEEk";
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Instantly check if a user session exists
         async function checkProtection() {
-            const { data: { session } } = await supabase.auth.getSession();
+            const { data: { session } } = await supabaseClient.auth.getSession();
             
             // If NO active login session is found, kick them to the login page immediately
             if (!session) {
