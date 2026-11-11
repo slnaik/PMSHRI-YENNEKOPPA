@@ -927,6 +927,9 @@ const masterStudentsList = [
   { id: "20283456735", name: "SNEHITH NAGARAJ VADDAR", class: "7", status: "Verified" },
   { id: "20309748309", name: "SPOORTHI P", class: "7", status: "Verified" },
         ];
+        <button onclick="logOutUser()" style="background-color: #800000; color: #FFD700; border: 2px solid #FFD700; padding: 8px 16px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-left: 10px;">
+    LOG OUT
+</button>
 
         function renderStudentsTable(filterTarget) {
             const tableBody = document.getElementById('studentBody');
@@ -972,5 +975,14 @@ const masterStudentsList = [
             renderStudentsTable('all');
         }
     </script>
+    <script>
+    async function logOutUser() {
+        // Ends the active login session in Supabase
+        await supabaseClient.auth.signOut();
+        
+        // Redirects back to the login screen to lock the website
+        window.location.href = "login.html";
+    }
+</script>
 </body>
 </html>
